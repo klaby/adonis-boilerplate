@@ -1,22 +1,21 @@
 import { IocContract } from '@adonisjs/fold'
 
 export default class AppProvider {
-  constructor (protected $container: IocContract) {
-  }
+  constructor(protected $container: IocContract) {}
 
-  public register () {
+  public register() {
     // Register your own bindings
   }
 
-  public boot () {
+  public boot() {
     // IoC container is ready
   }
 
-  public shutdown () {
+  public shutdown() {
     // Cleanup, since app is going down
   }
 
-  public ready () {
+  public ready() {
     // App is ready
   }
 }

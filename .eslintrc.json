@@ -1,3 +1,6 @@
 {
-  "extends": ["plugin:adonis/typescriptApp"]
+  "extends": ["plugin:adonis/typescriptApp"],
+  "rules": {
+    "@typescript-eslint/space-before-function-paren": "off"
+  }
 }

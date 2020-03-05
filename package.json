@@ -1,23 +1,26 @@
 {
-  "name": "adonis-boirlerplate-ts",
+  "name": "adonis-boilerplate-ts",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "node ace build",
     "start": "node ace serve --watch",
-    "lint": "eslint . --ext=.ts"
+    "lint": "eslint . --ext=.ts",
+    "format": "prettier --write \"**/*.ts\" \"**/*.js\""
   },
   "devDependencies": {
     "@adonisjs/assembler": "^1.3.4",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
     "adonis-preset-ts": "^1.0.4",
-    "eslint": "^6.8.0",
+    "eslint": "latest",
     "eslint-plugin-adonis": "^1.0.8",
     "husky": "^4.2.3",
     "pino-pretty": "^3.6.1",
     "prettier": "^1.19.1",
-    "typescript": "^3.8.3",
+    "typescript": "latest",
     "youch": "^2.0.10",
     "youch-terminal": "^1.0.0"
   },
