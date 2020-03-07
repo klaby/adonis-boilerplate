@@ -23,7 +23,7 @@
     smpltmpl "^1.0.2"
     snake-case "^3.0.3"
 
-"@adonisjs/application@^1.3.6", "@adonisjs/application@^1.3.7":
+"@adonisjs/application@^1.3.7":
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/@adonisjs/application/-/application-1.3.7.tgz#945bbabee4bb73a309d42fca29e65692afe17140"
   integrity sha512-PNKYdmTbzz0NDeU3wr0xoL1XALhvGqIDhEvDePNBq4RoATjI9zuB2n1ujEjIpeTTETt9uX0C/zpRDAbfSCILCQ==
@@ -31,12 +31,20 @@
     "@poppinss/utils" "^2.1.2"
     semver "^7.1.3"
 
-"@adonisjs/assembler@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-1.3.4.tgz#72cacbb8adeaab8ee0898af8cb401d67821a71b8"
-  integrity sha512-J3zKm6I9MJw4Yj0oLyWqn0vxYbnvOsPSolkJOwJ+kZUIUW6BdQUzD8+I9P+J1nHD46qoOQojqROD8tct+PwHMA==
+"@adonisjs/application@^1.3.8":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@adonisjs/application/-/application-1.3.8.tgz#8087fb15ff238ef9dab4f704e51e7963bfdd9f28"
+  integrity sha512-7zvrugf78x8ipcyq/QsIklBjeq2yeixzbNKdT0e7Q931ZimNk3o6miwE1op6Sj7FFU4LgSWi/nvXHRyiMPlR8Q==
   dependencies:
-    "@adonisjs/application" "^1.3.6"
+    "@poppinss/utils" "^2.1.2"
+    semver "^7.1.3"
+
+"@adonisjs/assembler@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-1.3.6.tgz#d38619745d1d0c5d84f1a961b77d0b598002b63d"
+  integrity sha512-Qa37Tw+YSQuNGIeWwTgEKefFH0zft4EdAPbhjaUP/hcG9LOJrJoQPCxVNugOpNoWQu9mdXoAvSTgrgifKE6QNQ==
+  dependencies:
+    "@adonisjs/application" "^1.3.8"
     "@adonisjs/ioc-transformer" "^1.0.2"
     "@adonisjs/sink" "^2.4.4"
     "@poppinss/chokidar-ts" "^2.0.3"
