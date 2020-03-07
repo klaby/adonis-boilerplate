@@ -28,8 +28,10 @@
     "@adonisjs/ace": "^6.0.0",
     "@adonisjs/core": "^5.0.0-preview",
     "@adonisjs/fold": "^6.0.0",
+    "@adonisjs/lucid": "^7.6.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",
-    "source-map-support": "^0.5.16"
+    "source-map-support": "^0.5.16",
+    "sqlite3": "^4.1.1"
   }
 }
