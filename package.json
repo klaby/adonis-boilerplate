@@ -20,6 +20,7 @@
     "husky": "^4.2.3",
     "pino-pretty": "^3.6.1",
     "prettier": "^1.19.1",
+    "rollup-plugin-uglify": "^6.0.4",
     "typescript": "latest",
     "youch": "^2.0.10",
     "youch-terminal": "^1.0.0"

@@ -1,6 +1,10 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
-
+import {
+  createError,
+  createResponse,
+  handlerErrorAdonis,
+} from 'http-handler-response'
 export default class UsersController {
   /**
    * @method index
@@ -11,10 +15,7 @@ export default class UsersController {
     try {
       return await User.all()
     } catch (error) {
-      response.status(500).json({
-        status: 500,
-        message: 'Internal server error.',
-      })
+      handlerErrorAdonis({ response, error })
     }
   }
 
@@ -25,12 +26,15 @@ export default class UsersController {
    */
   public async show({ response, params }: HttpContextContract) {
     try {
-      return await User.find(params.id)
+      const user = await User.find(params.id)
+
+      if (!user) {
+        throw createError({ code: 404, detail: 'User not found.' })
+      }
+
+      return user?.toJSON()
     } catch (error) {
-      response.status(500).json({
-        status: 500,
-        message: 'Internal server error.',
-      })
+      handlerErrorAdonis({ response, error })
     }
   }
 
@@ -48,15 +52,13 @@ export default class UsersController {
       user.email = data.email
       await user.save()
 
-      return response.status(201).json({
-        status: 201,
-        message: 'Successfully registered user.',
-      })
+      return response
+        .status(201)
+        .json(
+          createResponse({ code: 201, message: 'Successful registered user.' }),
+        )
     } catch (error) {
-      response.status(500).json({
-        status: 500,
-        message: 'Internal server error.',
-      })
+      handlerErrorAdonis({ response, error })
     }
   }
 
@@ -72,25 +74,21 @@ export default class UsersController {
       const user = await User.find(data.id)
 
       if (!user) {
-        throw {
-          status: 404,
-          message: 'User not found.',
-        }
+        throw createError({ code: 404, detail: 'User not found.' })
       }
 
       user.name = data.name
       user.email = data.email
       await user.save()
 
-      return response.status(200).json({
-        status: 200,
-        message: 'Successfully updated user.',
-      })
+      return response.status(200).json(
+        createResponse({
+          code: 200,
+          message: 'Successfully updated user.',
+        }),
+      )
     } catch (error) {
-      response.status(500).json({
-        status: 500,
-        message: 'Internal server error.',
-      })
+      handlerErrorAdonis({ response, error })
     }
   }
 
@@ -104,23 +102,18 @@ export default class UsersController {
       const user = await User.find(params.id)
 
       if (!user) {
-        throw {
-          status: 404,
-          message: 'User not found.',
-        }
+        throw createError({ code: 404, detail: 'User not found.' })
       }
 
       await user.delete()
 
-      return response.status(200).json({
-        status: 200,
-        message: 'User successfully deleted.',
-      })
+      return response
+        .status(200)
+        .json(
+          createResponse({ code: 200, message: 'User successfully deleted.' }),
+        )
     } catch (error) {
-      response.status(500).json({
-        status: 500,
-        message: 'Internal server error.',
-      })
+      handlerErrorAdonis({ response, error })
     }
   }
 }
