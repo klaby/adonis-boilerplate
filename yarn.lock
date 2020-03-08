@@ -39,10 +39,10 @@
     "@poppinss/utils" "^2.1.2"
     semver "^7.1.3"
 
-"@adonisjs/assembler@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-1.3.6.tgz#d38619745d1d0c5d84f1a961b77d0b598002b63d"
-  integrity sha512-Qa37Tw+YSQuNGIeWwTgEKefFH0zft4EdAPbhjaUP/hcG9LOJrJoQPCxVNugOpNoWQu9mdXoAvSTgrgifKE6QNQ==
+"@adonisjs/assembler@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@adonisjs/assembler/-/assembler-1.3.7.tgz#571cb3ac48772d979d7be3706a79ee9a8d3ea7d1"
+  integrity sha512-LIqhn/xgKz7h13uxuSeTfbreKIsEniP+vne6Kbd/bsRiKKsSP6KIk2fibg1/lfeOFsWwWHWVW7xZHTlxI3AOkg==
   dependencies:
     "@adonisjs/application" "^1.3.8"
     "@adonisjs/ioc-transformer" "^1.0.2"
@@ -2438,7 +2438,7 @@ http-errors@1.7.3, http-errors@~1.7.0, http-errors@~1.7.2:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
-http-handler-response@^http-handler-response:
+http-handler-response@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/http-handler-response/-/http-handler-response-0.6.0.tgz#767701ff01f49564cc07a2e39d11f0a402e3ddf0"
   integrity sha512-QpeJ9iLOyxpoTF/Mp1tkzRZwctRnKlJND0oXiVxoSnWemaPAncSdonat2tBK/yTxA6jRWiq5yxed7tqCO6O/7g==
