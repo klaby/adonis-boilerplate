@@ -5,9 +5,9 @@
  * file.
  */
 
-import { BodyParserConfigContract } from '@ioc:Adonis/Core/BodyParser'
+import { BodyParserConfig } from '@ioc:Adonis/Core/BodyParser'
 
-const bodyParserConfig: BodyParserConfigContract = {
+const bodyParserConfig: BodyParserConfig = {
   /*
   |--------------------------------------------------------------------------
   | White listed methods

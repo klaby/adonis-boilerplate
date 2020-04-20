@@ -5,9 +5,9 @@
  * file.
  */
 
-import { CorsConfigContract } from '@ioc:Adonis/Core/Cors'
+import { CorsConfig } from '@ioc:Adonis/Core/Cors'
 
-const corsConfig: CorsConfigContract = {
+const corsConfig: CorsConfig = {
   /*
   |--------------------------------------------------------------------------
   | Enabled

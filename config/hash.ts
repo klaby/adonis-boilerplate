@@ -5,7 +5,7 @@
  * file.
  */
 
-import { HashConfigContract } from '@ioc:Adonis/Core/Hash'
+import { HashConfig } from '@ioc:Adonis/Core/Hash'
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ import { HashConfigContract } from '@ioc:Adonis/Core/Hash'
 | defined inside `contracts` directory.
 |
 */
-const hashConfig: HashConfigContract = {
+const hashConfig: HashConfig = {
   /*
   |--------------------------------------------------------------------------
   | Default hasher

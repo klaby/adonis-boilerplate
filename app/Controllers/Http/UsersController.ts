@@ -8,6 +8,7 @@ import {
 import User from 'App/Models/User'
 
 import UserValidator from 'App/Validators/UserValidator'
+
 export default class UsersController {
   /**
    * @method index
