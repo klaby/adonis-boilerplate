@@ -1,40 +1,14 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { schema, validator, rules } from '@ioc:Adonis/Core/Validator'
-import User from 'App/Models/User'
 import {
   createError,
   createResponse,
   handlerError,
 } from 'http-handler-response'
+
+import User from 'App/Models/User'
+
+import UserValidator from 'App/Validators/UserValidator'
 export default class UsersController {
-  /**
-   * @public schemaValidation
-   *
-   * Validation scheme
-   */
-  public schemaValidation = validator.compile(
-    schema.create({
-      name: schema.string({ trim: true, escape: true }, [rules.required()]),
-      email: schema.string({ trim: true, escape: true }, [
-        rules.required(),
-        rules.email(),
-      ]),
-    }),
-  )
-
-  /**
-   * @public messages
-   *
-   * Personalized messages
-   */
-  public messages = {
-    'name.required': 'You must enter the name of the user.',
-    'name.string': 'The value entered for the user name is not valid.',
-    'email.required': 'You must enter the email of the user.',
-    'email.string': 'The value entered for the user email is not valid.',
-    'email.email': 'The email informed is invalid.',
-  }
-
   /**
    * @method index
    *
@@ -72,25 +46,22 @@ export default class UsersController {
    *
    * Register user
    */
-  public async store({ request, response }: HttpContextContract) {
+  public async store(ctx: HttpContextContract) {
     try {
-      const data = await request.validate({
-        schema: this.schemaValidation,
-        messages: this.messages,
-      })
+      const data = await ctx.request.validate(UserValidator)
 
       let user = new User()
       user.name = data.name
       user.email = data.email
       await user.save()
 
-      return response
+      return ctx.response
         .status(201)
         .json(
           createResponse({ code: 201, message: 'Successful registered user.' }),
         )
     } catch (error) {
-      handlerError(response, error)
+      handlerError(ctx.response, error)
     }
   }
 
@@ -99,14 +70,11 @@ export default class UsersController {
    *
    * Update user
    */
-  public async update({ request, response, params }: HttpContextContract) {
+  public async update(ctx: HttpContextContract) {
     try {
-      const data = await request.validate({
-        schema: this.schemaValidation,
-        messages: this.messages,
-      })
+      const data = await ctx.request.validate(new UserValidator(ctx))
 
-      const user = await User.find(params.id)
+      const user = await User.find(ctx.params.id)
 
       if (!user) {
         throw createError({ code: 404, detail: 'User not found.' })
@@ -116,14 +84,14 @@ export default class UsersController {
       user.email = data.email
       await user.save()
 
-      return response.status(200).json(
+      return ctx.response.status(200).json(
         createResponse({
           code: 200,
           message: 'Successfully updated user.',
         }),
       )
     } catch (error) {
-      handlerError(response, error)
+      handlerError(ctx.response, error)
     }
   }
 
