@@ -4,7 +4,7 @@ import User from 'App/Models/User'
 import {
   createError,
   createResponse,
-  handlerErrorAdonis,
+  handlerError,
 } from 'http-handler-response'
 export default class UsersController {
   /**
@@ -44,7 +44,7 @@ export default class UsersController {
     try {
       return await User.all()
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 
@@ -63,7 +63,7 @@ export default class UsersController {
 
       return user?.toJSON()
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 
@@ -90,7 +90,7 @@ export default class UsersController {
           createResponse({ code: 201, message: 'Successful registered user.' }),
         )
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 
@@ -123,7 +123,7 @@ export default class UsersController {
         }),
       )
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 
@@ -148,7 +148,7 @@ export default class UsersController {
           createResponse({ code: 200, message: 'User successfully deleted.' }),
         )
     } catch (error) {
-      handlerErrorAdonis({ response, error })
+      handlerError(response, error)
     }
   }
 }
