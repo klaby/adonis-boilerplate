@@ -2,6 +2,8 @@
   "extends": ["plugin:adonis/typescriptApp"],
   "rules": {
     "@typescript-eslint/space-before-function-paren": "off",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/class-name-casing": "off",
+    "@typescript-eslint/interface-name-prefix": "off"
   }
 }
