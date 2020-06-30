@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { createError, createResponse } from 'http-handler-response'
+import Event from '@ioc:Adonis/Core/Event'
 
 import User from 'App/Models/User'
 
@@ -43,6 +44,8 @@ export default class UsersController {
     user.email = data.email
     user.password = data.password
     await user.save()
+
+    Event.emit('user:send_mail', user.email)
 
     return createResponse(ctx.response, {
       code: 201,
