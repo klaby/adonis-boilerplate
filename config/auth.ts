@@ -21,7 +21,11 @@ const authConfig: AuthConfig = {
   guard: 'api',
   list: {
     api: {
-      driver: 'session',
+      driver: 'oat',
+      tokenProvider: {
+        driver: 'database',
+        table: 'api_tokens',
+      },
       provider: {
         driver: 'lucid',
         model: User,

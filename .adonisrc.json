@@ -17,8 +17,7 @@
     "./providers/AppProvider",
     "@adonisjs/core",
     "@adonisjs/auth",
-    "@adonisjs/lucid",
-    "@adonisjs/session"
+    "@adonisjs/lucid"
   ],
   "metaFiles": [".env", ".adonisrc.json"]
 }
