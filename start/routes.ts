@@ -25,5 +25,5 @@ Route.post('/auth', 'AuthController.auth')
 Route.group(() => {
   Route.resource('users', 'UsersController')
 })
-  .prefix('v1')
+  .prefix(`${process.env.API_VERSION}`)
   .middleware('auth')

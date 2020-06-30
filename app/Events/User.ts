@@ -5,8 +5,12 @@
  *
  * @param mail
  */
-const sendMail = (mail: string): void => {
-  setTimeout(() => console.log(`Sending mail to ${mail}...`), 3600)
+const sendMail = async (mail: string): Promise<any> => {
+  await Promise.resolve(
+    setTimeout(() => console.log(`Sending mail to ${mail}...`), 3600),
+  )
+
+  return 'sent'
 }
 
 export default {
