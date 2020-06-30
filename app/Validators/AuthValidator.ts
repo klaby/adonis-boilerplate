@@ -1,7 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 
-export default class UserValidator {
+export default class AuthValidator {
   constructor(private ctx: HttpContextContract) {}
 
   /**
@@ -24,7 +24,6 @@ export default class UserValidator {
    *    ```
    */
   public schema = schema.create({
-    name: schema.string({ trim: true, escape: true }, [rules.required()]),
     email: schema.string({ trim: true, escape: true }, [
       rules.required(),
       rules.email(),
@@ -53,12 +52,10 @@ export default class UserValidator {
    * }
    */
   public messages = {
-    'name.required': 'You must enter the name of the user.',
-    'name.string': 'The value entered for the user name is not valid.',
+    'password.required': 'You must enter the password.',
+    'password.string': 'The value of the password entered is not valid.',
     'email.required': 'You must enter the email of the user.',
     'email.string': 'The value entered for the user email is not valid.',
     'email.email': 'The email informed is invalid.',
-    'password.required': 'You must enter the password.',
-    'password.string': 'The value of the password entered is not valid.',
   }
 }

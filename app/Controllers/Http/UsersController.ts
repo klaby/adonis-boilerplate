@@ -15,11 +15,11 @@ export default class UsersController {
    *
    * Search all registered users
    */
-  public async index({ response }: HttpContextContract) {
+  public async index(ctx: HttpContextContract) {
     try {
       return await User.all()
     } catch (error) {
-      handlerError(response, error)
+      handlerError(ctx.response, error)
     }
   }
 
@@ -28,17 +28,17 @@ export default class UsersController {
    *
    * Search all registered users
    */
-  public async show({ response, params }: HttpContextContract) {
+  public async show(ctx: HttpContextContract) {
     try {
-      const user = await User.find(params.id)
+      const user = await User.find(ctx.params.id)
 
       if (!user) {
-        throw createError({ code: 404, detail: 'User not found.' })
+        createError({ code: 404, detail: 'User not found.' })
       }
 
       return user?.toJSON()
     } catch (error) {
-      handlerError(response, error)
+      handlerError(ctx.response, error)
     }
   }
 
@@ -54,14 +54,15 @@ export default class UsersController {
       let user = new User()
       user.name = data.name
       user.email = data.email
+      user.password = data.password
       await user.save()
 
-      return ctx.response
-        .status(201)
-        .json(
-          createResponse({ code: 201, message: 'Successful registered user.' }),
-        )
+      return createResponse(ctx.response, {
+        code: 201,
+        message: 'Successful registered user.',
+      })
     } catch (error) {
+      console.log(error)
       handlerError(ctx.response, error)
     }
   }
@@ -78,19 +79,17 @@ export default class UsersController {
       const user = await User.find(ctx.params.id)
 
       if (!user) {
-        throw createError({ code: 404, detail: 'User not found.' })
+        createError({ code: 404, detail: 'User not found.' })
       }
 
       user.name = data.name
       user.email = data.email
       await user.save()
 
-      return ctx.response.status(200).json(
-        createResponse({
-          code: 200,
-          message: 'Successfully updated user.',
-        }),
-      )
+      return createResponse(ctx.response, {
+        code: 200,
+        message: 'Successfully updated user.',
+      })
     } catch (error) {
       handlerError(ctx.response, error)
     }
@@ -101,9 +100,9 @@ export default class UsersController {
    *
    * Delete user
    */
-  public async delete({ response, params }: HttpContextContract) {
+  public async delete(ctx: HttpContextContract) {
     try {
-      const user = await User.find(params.id)
+      const user = await User.find(ctx.params.id)
 
       if (!user) {
         throw createError({ code: 404, detail: 'User not found.' })
@@ -111,13 +110,12 @@ export default class UsersController {
 
       await user.delete()
 
-      return response
-        .status(200)
-        .json(
-          createResponse({ code: 200, message: 'User successfully deleted.' }),
-        )
+      return createResponse(ctx.response, {
+        code: 200,
+        message: 'User successfully deleted.',
+      })
     } catch (error) {
-      handlerError(response, error)
+      handlerError(ctx.response, error)
     }
   }
 }

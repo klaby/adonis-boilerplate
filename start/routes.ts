@@ -20,8 +20,10 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+Route.post('/auth', 'AuthController.auth')
+
+Route.post('/users', 'UsersController.store')
 Route.get('/users', 'UsersController.index')
 Route.get('/users/:id', 'UsersController.show')
-Route.post('/users', 'UsersController.store')
 Route.put('/users/:id', 'UsersController.update')
 Route.delete('/users/:id', 'UsersController.delete')

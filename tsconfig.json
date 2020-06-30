@@ -17,11 +17,16 @@
       ],
       "Contracts/*": [
         "./contracts/*"
+      ],
+      "Database/*": [
+        "./database/*"
       ]
     },
     "types": [
       "@adonisjs/core",
-      "@adonisjs/lucid"
+      "@adonisjs/auth",
+      "@adonisjs/lucid",
+      "@adonisjs/session"
     ]
   }
 }

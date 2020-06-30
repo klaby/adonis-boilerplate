@@ -6,13 +6,11 @@
  */
 
 import Env from '@ioc:Adonis/Core/Env'
-import Application from '@ioc:Adonis/Core/Application'
 import { OrmConfig } from '@ioc:Adonis/Lucid/Orm'
+import Application from '@ioc:Adonis/Core/Application'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
-const databaseConfig: DatabaseConfig & {
-  orm: Partial<OrmConfig>
-} = {
+const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   /*
   |--------------------------------------------------------------------------
   | Connection
@@ -44,7 +42,6 @@ const databaseConfig: DatabaseConfig & {
       },
       useNullAsDefault: true,
       healthCheck: false,
-      debug: Env.get('LOG_LEVEL') === 'trace',
     },
 
     /*
@@ -68,7 +65,6 @@ const databaseConfig: DatabaseConfig & {
         database: Env.get('DB_NAME', 'lucid') as string,
       },
       healthCheck: false,
-      debug: Env.get('LOG_LEVEL') === 'trace',
     },
 
     /*
@@ -92,7 +88,6 @@ const databaseConfig: DatabaseConfig & {
         database: Env.get('DB_NAME', 'lucid') as string,
       },
       healthCheck: false,
-      debug: Env.get('LOG_LEVEL') === 'trace',
     },
   },
 

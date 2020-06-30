@@ -1,10 +1,11 @@
 /**
- * Config source: https://git.io/Jee3I
+ * Config source: https://git.io/JfefW
  *
  * Feel free to let us know via PR, if you find something broken in this config
  * file.
  */
 
+import Env from '@ioc:Adonis/Core/Env'
 import { HashConfig } from '@ioc:Adonis/Core/Hash'
 
 /*
@@ -12,7 +13,7 @@ import { HashConfig } from '@ioc:Adonis/Core/Hash'
 | Hash Config
 |--------------------------------------------------------------------------
 |
-| The `HashConfigContract` relies on the `HashList` interface which is
+| The `HashConfig` relies on the `HashList` interface which is
 | defined inside `contracts` directory.
 |
 */
@@ -26,7 +27,7 @@ const hashConfig: HashConfig = {
   | free to change the default value
   |
   */
-  default: 'bcrypt',
+  default: Env.get('HASH_DRIVER', 'argon') as 'argon',
 
   list: {
     /*
@@ -37,9 +38,9 @@ const hashConfig: HashConfig = {
     | Argon mapping uses the `argon2` driver to hash values.
     |
     | Make sure you install the underlying dependency for this driver to work.
-    | https://www.npmjs.com/package/@phc/argon2.
+    | https://www.npmjs.com/package/phc-argon2.
     |
-    | npm install @phc/argon2@"<2.0.0"
+    | npm install phc-argon2
     |
     */
     argon: {
@@ -59,9 +60,9 @@ const hashConfig: HashConfig = {
     | Bcrypt mapping uses the `bcrypt` driver to hash values.
     |
     | Make sure you install the underlying dependency for this driver to work.
-    | https://www.npmjs.com/package/@phc/bcrypt.
+    | https://www.npmjs.com/package/phc-bcrypt.
     |
-    | npm install @phc/bcrypt@"<2.0.0"
+    | npm install phc-bcrypt
     |
     */
     bcrypt: {
