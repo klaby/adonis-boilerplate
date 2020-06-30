@@ -39,6 +39,7 @@
     "@adonisjs/core": "^5.0.0-preview-rc-1.9",
     "@adonisjs/fold": "^6.3.5",
     "@adonisjs/lucid": "^8.2.2",
+    "@adonisjs/redis": "^4.0.3",
     "http-handler-response": "^0.9.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",

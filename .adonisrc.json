@@ -12,12 +12,20 @@
     "Config": "config",
     "Database": "database"
   },
-  "preloads": ["./start/routes", "./start/kernel", "./start/events"],
+  "preloads": [
+    "./start/routes",
+    "./start/kernel",
+    "./start/events"
+  ],
   "providers": [
     "./providers/AppProvider",
     "@adonisjs/core",
     "@adonisjs/auth",
-    "@adonisjs/lucid"
+    "@adonisjs/lucid",
+    "@adonisjs/redis"
   ],
-  "metaFiles": [".env", ".adonisrc.json"]
+  "metaFiles": [
+    ".env",
+    ".adonisrc.json"
+  ]
 }
